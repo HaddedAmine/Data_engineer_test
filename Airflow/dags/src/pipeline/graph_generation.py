@@ -144,6 +144,13 @@ class GraphGeneration(BaseGenerator):
             html.Div(id='analysis-result')
         ])
 
+        @app.callback(
+        Output('network-graph', 'figure'),
+        [Input('network-graph', 'clickData'),
+            Input('drug-node-selector', 'value'),
+            Input('reset-button', 'n_clicks')]
+        )
+
         # @app.callback(Output('network-graph', 'figure'), [Input('network-graph', 'clickData'), Input('drug-node-selector', 'value'), Input('reset-button', 'n_clicks')])
         def update_graph(clickData, drug_node_selection, n_clicks):
             ctx = dash.callback_context
