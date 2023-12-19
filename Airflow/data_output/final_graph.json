@@ -1,0 +1,210 @@
+{
+  "nodes": [
+    {
+      "id": "DIPHENHYDRAMINE"
+    },
+    {
+      "id": "clinical_trials"
+    },
+    {
+      "id": "Journal of emergency nursing"
+    },
+    {
+      "id": "pubmed"
+    },
+    {
+      "id": "The Journal of pediatrics"
+    },
+    {
+      "id": "TETRACYCLINE"
+    },
+    {
+      "id": "Journal of food protection"
+    },
+    {
+      "id": "American journal of veterinary research"
+    },
+    {
+      "id": "ETHANOL"
+    },
+    {
+      "id": "ATROPINE"
+    },
+    {
+      "id": "The journal of maternal-fetal & neonatal medicine"
+    },
+    {
+      "id": "EPINEPHRINE"
+    },
+    {
+      "id": "The journal of allergy and clinical immunology. In practice"
+    },
+    {
+      "id": "ISOPRENALINE"
+    },
+    {
+      "id": "Journal of photochemistry and photobiology. B, Biology"
+    },
+    {
+      "id": "BETAMETHASONE"
+    },
+    {
+      "id": "Hopitaux Universitaires de Geneve"
+    },
+    {
+      "id": "Journal of back and musculoskeletal rehabilitation"
+    }
+  ],
+  "edges": [
+    {
+      "source": "DIPHENHYDRAMINE",
+      "target": "clinical_trials",
+      "date": "reference"
+    },
+    {
+      "source": "DIPHENHYDRAMINE",
+      "target": "Journal of emergency nursing",
+      "date": "2019-01-01"
+    },
+    {
+      "source": "DIPHENHYDRAMINE",
+      "target": "pubmed",
+      "date": "reference"
+    },
+    {
+      "source": "DIPHENHYDRAMINE",
+      "target": "The Journal of pediatrics",
+      "date": "2019-01-02"
+    },
+    {
+      "source": "clinical_trials",
+      "target": "Journal of emergency nursing",
+      "date": "2020-04-27"
+    },
+    {
+      "source": "clinical_trials",
+      "target": "EPINEPHRINE",
+      "date": "reference"
+    },
+    {
+      "source": "clinical_trials",
+      "target": "BETAMETHASONE",
+      "date": "reference"
+    },
+    {
+      "source": "clinical_trials",
+      "target": "Hopitaux Universitaires de Geneve",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "Journal of emergency nursing",
+      "target": "pubmed",
+      "date": "2019-01-01"
+    },
+    {
+      "source": "Journal of emergency nursing",
+      "target": "EPINEPHRINE",
+      "date": "2020-04-27"
+    },
+    {
+      "source": "pubmed",
+      "target": "The Journal of pediatrics",
+      "date": "2019-01-02"
+    },
+    {
+      "source": "pubmed",
+      "target": "TETRACYCLINE",
+      "date": "reference"
+    },
+    {
+      "source": "pubmed",
+      "target": "Journal of food protection",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "pubmed",
+      "target": "American journal of veterinary research",
+      "date": "2020-01-02"
+    },
+    {
+      "source": "pubmed",
+      "target": "ATROPINE",
+      "date": "reference"
+    },
+    {
+      "source": "pubmed",
+      "target": "The journal of maternal-fetal & neonatal medicine",
+      "date": "2020-01-03"
+    },
+    {
+      "source": "pubmed",
+      "target": "EPINEPHRINE",
+      "date": "reference"
+    },
+    {
+      "source": "pubmed",
+      "target": "The journal of allergy and clinical immunology. In practice",
+      "date": "2020-03-01"
+    },
+    {
+      "source": "pubmed",
+      "target": "ISOPRENALINE",
+      "date": "reference"
+    },
+    {
+      "source": "pubmed",
+      "target": "Journal of photochemistry and photobiology. B, Biology",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "pubmed",
+      "target": "BETAMETHASONE",
+      "date": "reference"
+    },
+    {
+      "source": "pubmed",
+      "target": "Journal of back and musculoskeletal rehabilitation",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "TETRACYCLINE",
+      "target": "Journal of food protection",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "TETRACYCLINE",
+      "target": "American journal of veterinary research",
+      "date": "2020-01-02"
+    },
+    {
+      "source": "ATROPINE",
+      "target": "The journal of maternal-fetal & neonatal medicine",
+      "date": "2020-01-03"
+    },
+    {
+      "source": "The journal of maternal-fetal & neonatal medicine",
+      "target": "BETAMETHASONE",
+      "date": "2020-01-03"
+    },
+    {
+      "source": "EPINEPHRINE",
+      "target": "The journal of allergy and clinical immunology. In practice",
+      "date": "2020-03-01"
+    },
+    {
+      "source": "ISOPRENALINE",
+      "target": "Journal of photochemistry and photobiology. B, Biology",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "BETAMETHASONE",
+      "target": "Hopitaux Universitaires de Geneve",
+      "date": "2020-01-01"
+    },
+    {
+      "source": "BETAMETHASONE",
+      "target": "Journal of back and musculoskeletal rehabilitation",
+      "date": "2020-01-01"
+    }
+  ]
+}
