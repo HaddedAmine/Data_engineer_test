@@ -4,8 +4,10 @@ import plotly.graph_objects as go
 import dash
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import webbrowser
+from flask import request
+import requests
 
 from collections import Counter
 import threading
@@ -132,7 +134,7 @@ class GraphGeneration(BaseGenerator):
         return figure
     
     def run_app(self):
-        app = dash.Dash(__name__)
+        app = dash.Dash(__name__, server=True)
 
         drug_options = [{'label': drug, 'value': drug} for drug in self.mention_dict.keys()]
 
@@ -142,7 +144,9 @@ class GraphGeneration(BaseGenerator):
             html.Button('Reset Graph', id='reset-button'),
             dcc.Dropdown(id='analysis-selector', options=[{'label': 'Most Mentioned Journal', 'value': 'MOST_MENTIONED_JOURNAL'}, {'label': 'Common Drugs in Journals', 'value': 'COMMON_DRUGS'}], value='MOST_MENTIONED_JOURNAL'),
             dcc.Dropdown(id='drug-selector', options=drug_options, value=list(self.mention_dict.keys())[0] if self.mention_dict else None),
-            html.Div(id='analysis-result')
+            html.Div(id='analysis-result'),
+            html.Button('Shutdown Server', id='shutdown-button'),
+            html.Div(id='shutdown-placeholder')
         ])
 
         @app.callback(
@@ -170,24 +174,31 @@ class GraphGeneration(BaseGenerator):
                 common_drugs = self.find_drugs_in_common_journals(selected_drug)
                 return f"Common Drugs for {selected_drug}: {', '.join(common_drugs)}"
             return "Select an analysis"
+        
+        @app.server.route('/shutdown', methods=['POST'])
+        def shutdown():
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is not None:
+                func()
+            return 'Server shutting down...'
 
-        def run_dash():
-            dash_url = "http://127.0.0.1:8050"
-            webbrowser.open(dash_url)
-            app.run_server(debug=True)
+        # Callback for the shutdown button
+        @app.callback(
+            Output('shutdown-placeholder', 'children'),
+            [Input('shutdown-button', 'n_clicks')],
+            prevent_initial_call=True
+        )
+        def shutdown_callback(n_clicks):
+            if n_clicks:
+                try:
+                    requests.post('http://localhost:8050/shutdown')
+                    return "Server shutting down..."
+                except Exception as e:
+                    print(f"Error sending shutdown request: {e}")
+                    return "Error in shutting down server"
+        # def run_dash():
+        # dash_url = "http://127.0.0.1:8050"
+        # webbrowser.open(dash_url)
+        app.run_server(debug=True, host='0.0.0.0', port=8050)
 
-        # Start Dash app in a separate thread
-        dash_thread = threading.Thread(target=run_dash)
-        dash_thread.start()
-
-        # Wait for user input to terminate
-        while True:
-            if input("Press 'q' to quit: ").lower() == 'q':
-                # Implement a mechanism to safely shut down the Dash app
-                # As of now, you'll manually need to stop the Dash server
-                break
-
-        # Join the Dash thread (optional, as manual shutdown is required)
-        dash_thread.join()
-        print("Dash app terminated.")
-   
+       
